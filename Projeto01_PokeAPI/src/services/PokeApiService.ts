@@ -1,4 +1,8 @@
-export async function buscarPokemonAPI(pokemon: string) {
+import { PokemonResponse } from '../class/class';
+
+export async function buscarPokemonAPI(
+  pokemon: string,
+): Promise<Response | undefined> {
   try {
     const urlBaseAPI = 'https://pokeapi.co/api/v2/pokemon/';
     const responseAPI = await fetch(`${urlBaseAPI}${pokemon}`);
@@ -7,10 +11,12 @@ export async function buscarPokemonAPI(pokemon: string) {
       throw new Error('Erro de busca... :<');
     }
 
-    const body = await responseAPI.json();
-
-    return body;
+    return responseAPI;
   } catch (error) {
     console.log(error);
   }
+}
+
+export function montarResponseAPI(busca: Promise<Response | undefined>) {
+  const pokemon = new PokemonResponse();
 }
