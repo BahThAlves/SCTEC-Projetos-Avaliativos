@@ -1,4 +1,4 @@
-import { Interface } from 'node:readline';
+import { Interface } from 'node:readline/promises';
 
 import { menuView } from '../view/viewers';
 

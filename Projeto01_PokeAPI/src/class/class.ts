@@ -1,21 +1,20 @@
-class PokemonTypes {
-  typeName: string;
+export class PokemonType {
+  constructor(public typeName: string) {}
 }
 
-class PokemonStats {
-  baseHP: number;
-
-  baseATK: number;
-
-  baseDEF: number;
+export class PokemonStats {
+  constructor(
+    public hp: number,
+    public atk: number,
+    public def: number,
+  ) {}
 }
 
 export class PokemonResponse {
-  id: number;
-
-  name: string;
-
-  types: PokemonTypes[];
-
-  stats: PokemonStats[];
+  constructor(
+    public id: number,
+    public name: string,
+    public types: PokemonType[],
+    public stats: PokemonStats,
+  ) {}
 }
