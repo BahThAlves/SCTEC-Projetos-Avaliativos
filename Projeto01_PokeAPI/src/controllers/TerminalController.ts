@@ -1,26 +1,59 @@
 import { Interface } from 'node:readline/promises';
 
-import { menuView } from '../view/viewers';
+import { buscarPokemonAPI } from '../services/PokeApiService';
+import { menuView, adicionarOuRemoverPokemon } from '../view/viewers';
 
 export async function terminalController(interfaceConsole: Interface) {
-  let running = true;
+  let runningTerminal = true;
 
-  while (running) {
+  while (runningTerminal) {
     menuView();
-    const opcao: string = await interfaceConsole.question('(1, 2, 3, 4): ');
+    const opcao: string = await interfaceConsole.question('(1, 2, 3): ');
 
     switch (opcao) {
       case '1':
+        // buscar
+        {
+          let runningCases = true;
+
+          const pokemon: string | number = await interfaceConsole.question(
+            '\nDigite o Nome/Id do Pokemon que deseja buscar: ',
+          );
+          const busca = await buscarPokemonAPI(pokemon);
+
+          if (busca) {
+            while (runningCases) {
+              adicionarOuRemoverPokemon();
+              let escolha = await interfaceConsole.question('(1, 2, 3): ');
+
+              if (escolha !== '1' && escolha !== '2' && escolha !== '3') {
+                console.log('Opção inexistente!!');
+                escolha = await interfaceConsole.question('(1, 2, 3): ');
+              }
+
+              if (escolha === '1') {
+                // adicionar
+              }
+
+              if (escolha === '2') {
+                // remover
+              }
+
+              if (escolha === '3') {
+                runningCases = false;
+              }
+            }
+          }
+        }
         break;
 
       case '2':
+        // listar
         break;
 
       case '3':
-        break;
-
-      case '4':
-        running = false;
+        // sair
+        runningTerminal = false;
         break;
     }
   }
