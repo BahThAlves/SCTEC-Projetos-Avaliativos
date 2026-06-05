@@ -1,3 +1,5 @@
+import { pokemonValidator } from '../validators/pokemonValidator';
+
 export async function buscarPokemonAPI(pokemon: string) {
   try {
     const urlBaseAPI = 'https://pokeapi.co/api/v2/pokemon/';
@@ -8,7 +10,7 @@ export async function buscarPokemonAPI(pokemon: string) {
     }
 
     const body = await responseAPI.json();
-    return body;
+    return pokemonValidator.validate(body);
   } catch (error) {
     console.log(error);
   }

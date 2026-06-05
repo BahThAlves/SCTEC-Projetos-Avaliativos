@@ -20,7 +20,6 @@ export async function terminalController(interfaceConsole: Interface) {
             '\nDigite o Nome/Id do Pokemon que deseja buscar: ',
           );
           const busca = await buscarPokemonAPI(pokemon);
-
           if (busca) {
             while (runningCases) {
               adicionarOuRemoverPokemon();
