@@ -1,5 +1,6 @@
 import { Interface } from 'node:readline/promises';
 
+import { addPokemon, lerEquipe } from '../services/addRemovPokemon';
 import { buscarPokemonAPI } from '../services/PokeApiService';
 import { menuView, adicionarOuRemoverPokemon } from '../view/viewers';
 
@@ -31,7 +32,9 @@ export async function terminalController(interfaceConsole: Interface) {
               }
 
               if (escolha === '1') {
-                // adicionar
+                // add
+                await addPokemon(busca.name);
+                runningCases = false;
               }
 
               if (escolha === '2') {
@@ -47,7 +50,10 @@ export async function terminalController(interfaceConsole: Interface) {
         break;
 
       case '2':
-        // listar
+        {
+          const equipe = await lerEquipe();
+          console.log(equipe);
+        }
         break;
 
       case '3':
