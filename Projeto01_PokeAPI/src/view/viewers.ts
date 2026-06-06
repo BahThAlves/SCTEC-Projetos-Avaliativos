@@ -12,13 +12,13 @@ export function menuView(): void {
   );
 }
 
-export function adicionarOuRemoverPokemon(): void {
+export function adicionarOuRemoverPokemon(pokemonResponse: string): void {
   console.log(
     `
   ================================
       POKEDEX TYPESCRIPT LITE
   ================================
-      Pokemon encontrado!!
+      Pokemon "${pokemonResponse}" encontrado!!
 
   1 - Adicionar
   2 - Remover

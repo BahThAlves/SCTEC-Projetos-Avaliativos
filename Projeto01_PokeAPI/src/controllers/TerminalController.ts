@@ -27,7 +27,7 @@ export async function terminalController(interfaceConsole: Interface) {
           const busca = await buscarPokemonAPI(pokemon);
           if (busca) {
             while (runningCases) {
-              adicionarOuRemoverPokemon();
+              adicionarOuRemoverPokemon(busca.name);
               let escolha = await interfaceConsole.question('(1, 2, 3): ');
 
               if (escolha !== '1' && escolha !== '2' && escolha !== '3') {
@@ -56,6 +56,7 @@ export async function terminalController(interfaceConsole: Interface) {
         break;
 
       case '2':
+        // listar
         {
           const equipe = await lerEquipe();
           console.log(equipe);

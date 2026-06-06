@@ -43,11 +43,11 @@ export async function addPokemon(pokemonResponse: string) {
   try {
     for (const atual of equipe) {
       if (atual.id === pokemon.id) {
-        throw new Error(`O Pokemon "${atual.name}" já está no database`);
+        throw new Error(`O Pokemon "${atual.name}" já está na sua equipe`);
       }
     }
 
-    console.log('Capturando...');
+    console.log('\n\n\n\nCapturando...');
 
     equipe.push(pokemon);
     await writeFile('./pc_box.json', JSON.stringify(equipe), {
@@ -64,11 +64,11 @@ export async function removPokemon(pokemonResponse: string) {
   const equipe = await lerEquipe();
 
   if (!equipe || equipe.length === 0) {
-    console.log('\nVocê não tem pokemons na sua equipe!');
+    console.log('\n\n\n\nVocê não tem pokemons na sua equipe!');
     return;
   }
 
-  console.log('\nSoltando pokemon...');
+  console.log('\n\n\n\nSoltando pokemon...');
   const index = equipe.findIndex(
     (p) => p.name.toLowerCase() === pokemonResponse.toLowerCase(),
   );
