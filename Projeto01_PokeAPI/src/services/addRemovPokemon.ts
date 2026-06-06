@@ -59,3 +59,29 @@ export async function addPokemon(pokemonResponse: string) {
     console.log(error);
   }
 }
+
+export async function removPokemon(pokemonResponse: string) {
+  const equipe = await lerEquipe();
+
+  if (!equipe || equipe.length === 0) {
+    console.log('\nVocê não tem pokemons na sua equipe!');
+    return;
+  }
+
+  console.log('\nSoltando pokemon...');
+  const index = equipe.findIndex(
+    (p) => p.name.toLowerCase() === pokemonResponse.toLowerCase(),
+  );
+
+  if (index === -1) {
+    console.log(`Pokemon "${pokemonResponse}" não encontrado.`);
+    return;
+  }
+
+  void equipe.splice(index, 1)[0];
+
+  await writeFile('./pc_box.json', JSON.stringify(equipe), {
+    encoding: 'utf-8',
+  });
+  console.log(`Pokemon removido da sua equipe :<`);
+}

@@ -1,6 +1,10 @@
 import { Interface } from 'node:readline/promises';
 
-import { addPokemon, lerEquipe } from '../services/addRemovPokemon';
+import {
+  addPokemon,
+  lerEquipe,
+  removPokemon,
+} from '../services/addRemovPokemon';
 import { buscarPokemonAPI } from '../services/PokeApiService';
 import { menuView, adicionarOuRemoverPokemon } from '../view/viewers';
 
@@ -39,6 +43,8 @@ export async function terminalController(interfaceConsole: Interface) {
 
               if (escolha === '2') {
                 // remover
+                await removPokemon(busca.name);
+                runningCases = false;
               }
 
               if (escolha === '3') {
