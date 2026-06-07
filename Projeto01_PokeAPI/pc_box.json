@@ -1,1 +1,16 @@
-[{"_id":25,"_name":"pikachu","_type":[{"typeName":"electric"}],"_stats":{"hp":35,"atk":55,"def":40}}]
+[
+    {
+        "_id": 25,
+        "_name": "pikachu",
+        "_type": [
+            {
+                "typeName": "electric"
+            }
+        ],
+        "_stats": {
+            "hp": 35,
+            "atk": 55,
+            "def": 40
+        }
+    }
+]

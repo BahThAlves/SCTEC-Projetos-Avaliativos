@@ -2,7 +2,7 @@ import { Interface } from 'node:readline/promises';
 
 import {
   addPokemon,
-  lerEquipe,
+  listarEquipe,
   removPokemon,
 } from '../services/addRemovPokemon';
 import { buscarPokemonAPI } from '../services/PokeApiService';
@@ -57,10 +57,7 @@ export async function terminalController(interfaceConsole: Interface) {
 
       case '2':
         // listar
-        {
-          const equipe = await lerEquipe();
-          console.log(equipe);
-        }
+        await listarEquipe();
         break;
 
       case '3':

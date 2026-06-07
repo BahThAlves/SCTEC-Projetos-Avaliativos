@@ -85,3 +85,21 @@ export async function removPokemon(pokemonResponse: string) {
   });
   console.log(`Pokemon removido da sua equipe :<`);
 }
+
+export async function listarEquipe() {
+  const equipe = await lerEquipe();
+
+  if (!equipe || equipe.length === 0) {
+    console.log('\n\n\n\nVocê não tem pokemons na sua equipe!');
+    return;
+  }
+
+  console.log('\n\n\n\nSua equipe:');
+  for (const pokemon of equipe) {
+    const tipos = pokemon.types.map((t) => t.typeName).join(', ');
+
+    console.log(
+      `#${String(pokemon.id)} - ${pokemon.name} | Tipos: ${tipos}    |    HP: ${String(pokemon.stats.hp)} | ATK: ${String(pokemon.stats.atk)} | DEF: ${String(pokemon.stats.def)}`,
+    );
+  }
+}
