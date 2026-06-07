@@ -48,6 +48,7 @@ export async function terminalController(interfaceConsole: Interface) {
               }
 
               if (escolha === '3') {
+                // sair
                 runningCases = false;
               }
             }
